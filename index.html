@@ -214,7 +214,7 @@
 
         <div id="result-card">
             <b>نتیجه:</b>
-            <div id="result-text">منتظر تفسیرت هستم حنا…</div>
+            <div id="result-text">منتظر تفسیرت هستم …</div>
             <div class="metric-container" id="metricsDisplay" style="display: none;">
                 <div class="metric-item">
                     <div class="metric-label">امید</div>
@@ -282,7 +282,7 @@
             errorMessageDiv.innerText = ""; // Clear any previous errors
 
             try {
-                const response = await fetch("http://127.0.0.1:8000/interpret", {
+                const response = await fetch("https://digital-fanjan.onrender.com/interpret", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ user_input: userText })
