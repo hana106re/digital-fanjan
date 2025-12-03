@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فنجان‌خوان دیجیتال حنا ❤️🔥</title>
+    <link href="https://fonts.cdnfonts.com/css/vazirmatn" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
+            color: #E0E0E0;
+            overflow: hidden; /* Hide overflow for star field */
+            background: linear-gradient(135deg, #1A0D2E, #360E4E, #1A0D2E);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .star-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle linear infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        #container {
+            background: rgba(10, 5, 20, 0.85); /* Darker, slightly transparent background */
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-out;
+            border: 1px solid rgba(100, 50, 150, 0.5); /* Subtle border */
+        }
+
+        h1 {
+            color: #FFD700; /* Gold-like color */
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #C0C0C0;
+        }
+
+        textarea {
+            width: calc(100% - 24px);
+            height: 140px;
+            padding: 12px;
+            border: 1px solid #7B246B;
+            border-radius: 10px;
+            background: #25103F; /* Darker input */
+            color: #E0E0E0;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.1em;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #FF007F; /* Pink focus */
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+        }
+
+        button {
+            background: linear-gradient(90deg, #FF007F, #A020F0); /* Pink to Purple gradient */
+            border: none;
+            padding: 15px 35px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            animation-play-state: paused; /* Pause pulse on hover */
+        }
+
+        #result-card {
+            margin-top: 40px;
+            padding: 25px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #25103F, #4A1E5C); /* Gradient background for card */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            font-size: 1.1em;
+            line-height: 1.8;
+            border: 1px solid rgba(150, 70, 200, 0.4);
+            text-align: right; /* RTL alignment */
+        }
+
+        #result-text {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .metric-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            min-width: 80px;
+        }
+
+        .metric-bar-bg {
+            width: 6px;
+            height: 80px;
+            background: #4A1E5C;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .metric-bar-fill {
+            width: 100%;
+            background: linear-gradient(to top, #FF007F, #A020F0); /* Gradient fill */
+            position: absolute;
+            bottom: 0;
+            transition: height 0.8s ease-out;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #C0C0C0;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 1em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        #error-message {
+            color: #FF4136; /* Red for error messages */
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1em; }
+            button { font-size: 1.1em; padding: 12px 30px; }
+            textarea { height: 100px; font-size: 1em; }
+            #result-card { padding: 20px; }
+            .metric-item { margin: 5px; min-width: 60px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="star-field" id="star-field"></div>
+    <audio id="clickSound" src="https://www.soundjay.com/buttons/button-10.mp3" preload="auto"></audio>
+    <audio id="successSound" src="https://www.soundjay.com/misc/magic-chime-01.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/misc/lose-sound-1.mp3" preload="auto"></audio>
+
+    <div id="container">
+        <h1>✨ فنجان‌خوان دیجیتال حنا ❤️🔥</h1>
+        <p>جمله یا نیتت رو بنویس تا فنجانت رو تفسیر کنم…</p>
+
+        <textarea id="userInput" placeholder="چیزی بنویس …"></textarea>
+
+        <button onclick="interpret()">تفسیر کن!</button>
+
+        <div id="result-card">
+            <b>نتیجه:</b>
+            <div id="result-text">منتظر تفسیرت هستم حنا…</div>
+            <div class="metric-container" id="metricsDisplay" style="display: none;">
+                <div class="metric-item">
+                    <div class="metric-label">امید</div>
+                    <div class="metric-bar-bg"><div id="hopeBar" class="metric-bar-fill"></div></div>
+                    <div id="hopeValue" class="metric-value"></div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">انرژی</div>
+                    <div class="metric-bar-bg"><div id="energyBar" class="metric-bar-fill"></div></div>
+                    <div id="energyValue" class="metric-value"></div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">پیچیدگی</div>
+                    <div class="metric-bar-bg"><div id="complexityBar" class="metric-bar-fill"></div></div>
+                    <div id="complexityValue" class="metric-value"></div>
+                </div>
+            </div>
+            <div id="error-message"></div>
+        </div>
+    </div>
+
+    <script>
+        // Star field generation
+        const starField = document.getElementById('star-field');
+        for (let i = 0; i < 100; i++) { // 100 stars for a subtle effect
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = star.style.height = `${Math.random() * 3}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starField.appendChild(star);
+        }
+
+        const clickSound = document.getElementById('clickSound');
+        const successSound = document.getElementById('successSound');
+        const errorSound = document.getElementById('errorSound');
+
+        async function interpret() {
+            clickSound.play(); // Play click sound
+            const userText = document.getElementById("userInput").value.trim();
+            const resultTextDiv = document.getElementById("result-text");
+            const errorMessageDiv = document.getElementById("error-message");
+            const metricsDisplay = document.getElementById("metricsDisplay");
+
+            // Reset previous states
+            resultTextDiv.innerText = "";
+            errorMessageDiv.innerText = "";
+            metricsDisplay.style.display = "none";
+            document.getElementById("hopeBar").style.height = "0%";
+            document.getElementById("energyBar").style.height = "0%";
+            document.getElementById("complexityBar").style.height = "0%";
+            document.getElementById("hopeValue").innerText = "";
+            document.getElementById("energyValue").innerText = "";
+            document.getElementById("complexityValue").innerText = "";
+
+
+            if (!userText) {
+                resultTextDiv.innerText = "… اول یه جمله بنویس 🤍";
+                errorSound.play();
+                return;
+            }
+
+            resultTextDiv.innerText = "در حال تفسیر… صبر کن  ❤️";
+            errorMessageDiv.innerText = ""; // Clear any previous errors
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/interpret", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ user_input: userText })
+                });
+
+                if (!response.ok) {
+                    errorSound.play();
+                    let errorDetails = "خطای ناشناخته";
+                    try {
+                        const errorData = await response.json();
+                        errorDetails = errorData.detail || errorData.message || JSON.stringify(errorData);
+                    } catch {
+                        errorDetails = response.statusText;
+                    }
+                    errorMessageDiv.innerText = `ارتباط با سرور برقرار نشد! (کد: ${response.status}) - ${errorDetails}`;
+                    resultTextDiv.innerText = ""; // Clear "در حال تفسیر"
+                    return;
+                }
+
+                const data = await response.json();
+                
+                // Display interpretation
+                resultTextDiv.innerText = data.interpretation;
+
+                // Display metrics
+                metricsDisplay.style.display = "flex";
+
+                const hope = (data.hope * 100).toFixed(0);
+                const energy = (data.energy * 100).toFixed(0);
+                const complexity = (data.complexity * 100).toFixed(0);
+
+                document.getElementById("hopeBar").style.height = `${hope}%`;
+                document.getElementById("energyBar").style.height = `${energy}%`;
+                document.getElementById("complexityBar").style.height = `${complexity}%`;
+
+                document.getElementById("hopeValue").innerText = `${hope}%`;
+                document.getElementById("energyValue").innerText = `${energy}%`;
+                document.getElementById("complexityValue").innerText = `${complexity}%`;
+
+                successSound.play(); // Play success sound
+            } catch (err) {
+                errorSound.play();
+                errorMessageDiv.innerText = `خطا در ارتباط با سرور… شاید سرور خاموشه یا مشکلی در شبکه وجود دارد: ${err.message}`;
+                resultTextDiv.innerText = ""; // Clear "در حال تفسیر"
+            }
+        }
+    </script>
+</body>
+</html>
